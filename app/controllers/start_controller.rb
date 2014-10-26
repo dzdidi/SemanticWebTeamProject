@@ -1,10 +1,14 @@
 class StartController < ApplicationController
   def search
-    book = params[:search][:book]
+  	if !params[:search].nil?
+    	book = params[:search][:book]
+    end
     if !book.nil?
-      p book
-      #path book to search method
+    	p "response"
+        p Book.obtain(book)
+      
       #redirect to book show method
     end
+
   end
 end
