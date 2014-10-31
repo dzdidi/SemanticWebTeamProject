@@ -1,5 +1,6 @@
 require "net/http"
 class Book < ActiveRecord::Base
+<<<<<<< HEAD
   OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE #stupid trick
   app_id = "383644138456712"
   app_secret = "6098a751b6d9b829b245fef8ec1f3408"  
@@ -68,4 +69,25 @@ class Book < ActiveRecord::Base
   #   uri_request = "http://graph.facebook.com/v2.1/oauth/access_token?client_id=#{app_id}&client_secret=#{app_secret}&grant_type=client_credentials"
   # end
 
+
+	def searchGoogle(title)
+		#books = GoogleBooks.search(9780345508553) 
+		#book = books.first
+		#puts 'information:'
+		#book.each { |k, v| puts "Key: #{k}, Value: #{v}" }
+		puts '-------------'
+		#y = book.sale_info.each { |k, v| puts "Key: #{k}, Value: #{v}" }
+	end
+
+	def Book.testGoolge
+		#https://github.com/zeantsoi/GoogleBooks
+		books = GoogleBooks.search(9780345508553) 
+		book = books.first
+		data = book.sale_info
+		data["title"] = book.title
+		data["image_link"] = book.image_link
+
+		return data
+		#y = data.each { |k, v| puts "Key: #{k}, Value: #{v}" }
+	end
 end
