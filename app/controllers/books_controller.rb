@@ -5,7 +5,16 @@ class BooksController < ApplicationController
   # GET /books.json
   def index
     @books = Book.all
+    @data = @books.testGoolge
+    @data.each { |k, v| puts "Key: #{k}, Value: #{v}" }
+    #
+    render :partial => "bookdetail", :locals => { :data => @data }
   end
+
+  def bookdata
+    
+  end
+
 
   # GET /books/1
   # GET /books/1.json
