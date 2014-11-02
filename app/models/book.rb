@@ -1,5 +1,6 @@
 require "net/http"
 class Book < ActiveRecord::Base
+  OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE #stupid trick
   app_id = "383644138456712"
   app_secret = "6098a751b6d9b829b245fef8ec1f3408"  
   def self.obtain(title)
@@ -27,10 +28,19 @@ class Book < ActiveRecord::Base
 
   def self.search_friends_books()
     #request:
-    #request_url = "https://graph.facebook.com/endpoint?key=value&access_token=383644138456712"#|6098a751b6d9b829b245fef8ec1f3408"
-    request_url = "http://graph.facebook.com/v2.1/me?"#?fields=frineds{books}"
-    uri = URI(request_url)
-    response = Net::HTTP.get(uri)
+    #request_url = "https://graph.facebook.com/endpoint?key=value&access_token=#{$token}"#|6098a751b6d9b829b245fef8ec1f3408"
+
+
+#fields=friends{books}&
+#%7Bbooks%7D
+
+
+    uri = URI.parse("https://graph.facebook.com/v2.1/me?access_token=#{$token}")#%7Bbooks%7D&access_token=#{$token}")
+    http = Net::HTTP.new(uri.host, uri.port)
+    http.use_ssl = true
+    http.verify_mode = OpenSSL::SSL::VERIFY_PEER
+    request = Net::HTTP::Get.new(uri.request_uri)
+    response = http.request(request)
 
     #response example
     # "friends": {
@@ -43,6 +53,9 @@ class Book < ActiveRecord::Base
     #             "created_time": "2011-02-08T13:22:56+0000", 
     #             "id": "107321249309508"
     #           }] 
+    p "==================================="
+    p response.body
+    p "==================================="
   end
 
   def search_friends_books(book)

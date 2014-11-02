@@ -4,11 +4,16 @@ class StartController < ApplicationController
     	book = params[:search][:book]
     end
     if !book.nil?
-    	p "response"
-        p Book.obtain(book)
+    	Book.search_friends_books#(book)
       
       #redirect to book show method
     end
 
+  end
+
+  def get_token_and_uid
+    $uid = params[:uid]
+    $token = params[:token]
+    $login = true
   end
 end

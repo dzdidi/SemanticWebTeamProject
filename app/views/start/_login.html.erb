@@ -11,6 +11,20 @@
     if (response.status === 'connected') {
       // Logged into your app and Facebook.
       testAPI();
+
+      var uid = response.authResponse.userID;
+      var accessToken = response.authResponse.accessToken;
+
+
+      $.ajax({
+         url:'/start_controller/get_token_and_uid', //Defined in your routes file
+         data:(
+           'uid=' + uid + '&' + 'token=' + accessToken
+         )
+      })
+
+
+
     } else if (response.status === 'not_authorized') {
       // The person is logged into Facebook, but not your app.
       document.getElementById('status').innerHTML = 'Please log ' +
