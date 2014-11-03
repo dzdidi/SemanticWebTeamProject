@@ -1,22 +1,33 @@
 <h1>Listing books</h1>
-<div
-  class="fb-like"
-  data-send="true"
-  data-width="450"
-  data-show-faces="true">
-</div>
+
 <table>
   <thead>
     <tr>
+      <th>Name</th>
+      <th>Author</th>
+      <th>Abstract</th>
+      <th>Numberofpages</th>
+      <th>Publisher</th>
       <th></th>
       <th></th>
       <th></th>
     </tr>
   </thead>
-
+  <tbody>
+  <form action = "/books/new" >
+    Search:
+    <input type="text" name="keyword">
+    <input type="submit"/>
+  </form>
+  </tbody>
   <tbody>
     <% @books.each do |book| %>
       <tr>
+        <td><%= book.name %></td>
+        <td><%= book.author %></td>
+        <td><%= book.abstract %></td>
+        <td><%= book.numberOfPages %></td>
+        <td><%= book.publisher %></td>
         <td><%= link_to 'Show', book %></td>
         <td><%= link_to 'Edit', edit_book_path(book) %></td>
         <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>

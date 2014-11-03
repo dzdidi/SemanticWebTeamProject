@@ -1,4 +1,6 @@
 SemanticWebTeamProject::Application.routes.draw do
+  resources :books
+
   get "start/search"
   post "start/search"
   resources :books 
