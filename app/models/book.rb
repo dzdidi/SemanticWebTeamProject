@@ -34,8 +34,8 @@ class Book < ActiveRecord::Base
 #fields=friends{books}&
 #%7Bbooks%7D
 
-
-    uri = URI.parse("https://graph.facebook.com/v2.1/me?access_token=#{$token}")#%7Bbooks%7D&access_token=#{$token}")
+    url = "https://graph.facebook.com/v2.1/me?friends%7Bbooks%7D&access_token=#{$token}"
+    uri = URI.parse(url)#%7Bbooks%7D&access_token=#{$token}")
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
     http.verify_mode = OpenSSL::SSL::VERIFY_PEER
