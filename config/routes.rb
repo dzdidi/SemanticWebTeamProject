@@ -59,4 +59,7 @@ SemanticWebTeamProject::Application.routes.draw do
   #     resources :products
   #   end
   root 'start#search'
+
+  post 'start_controller/get_token_and_uid', to: 'start#get_token_and_uid'
+  get 'start_controller/get_token_and_uid', to: 'start#get_token_and_uid'
 end
