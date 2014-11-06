@@ -56,12 +56,9 @@ GEM
     mime-types (1.25.1)
     minitest (4.7.5)
     multi_json (1.10.1)
-<<<<<<< HEAD
     multi_xml (0.5.5)
-=======
     mysql2 (0.3.16)
     net-http-persistent (2.9.4)
->>>>>>> 27189229f79fffb3b19615d348e7c59e20ee567b
     polyglot (0.3.5)
     rack (1.5.2)
     rack-test (0.6.2)
