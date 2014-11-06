@@ -28,6 +28,45 @@ class BooksController < ApplicationController
   # GET /books/new
   def new
     @book = Book.new
+
+    #Get the first result from sparql
+    #and show the result on "new" page
+    if defined? params[:keyword]
+      @book.name = params[:keyword]
+      sparql = SPARQL::Client.new("http://dbpedia.org/sparql")
+      queryString="
+        PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+        PREFIX dbpedia: <http://dbpedia.org/resource/>
+        PREFIX ontology: <http://dbpedia.org/ontology/>
+        PREFIX dct: <http://purl.org/dc/terms/>
+        select distinct ?name ?book ?author ?abstract ?numberOfPages ?publisher
+        where {
+          ?book rdf:type ontology:Book;
+                dbpprop:name ?name;   
+                ontology:abstract ?abstract;
+                dbpprop:author ?author.
+          OPTIONAL {
+          ?book ontology:numberOfPages ?numberOfPages;
+                dbpprop:publisher ?publisher
+          }
+          FILTER (langMatches(lang(?abstract), 'EN'))
+          FILTER (lcase(str(?name)) = lcase('#{@book.name}'))
+        }LIMIT 1"
+      query = sparql.query(queryString)
+      query.each_solution do |solution|
+        if solution.bound?('author') # ||= true
+          @book.author = solution.author
+        end
+        if solution.bound?('numberOfPages') #||= true
+          @book.numberOfPages = solution.numberOfPages
+        end
+        if solution.bound?('publisher') #||= true
+          @book.publisher = solution.publisher
+        end
+        @book.abstract = solution.abstract.to_s
+      end
+    end
   end
 
   # GET /books/1/edit
@@ -82,6 +121,6 @@ class BooksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def book_params
-      params[:book]
+      params.require(:book).permit(:name, :author, :abstract, :numberOfPages, :publisher)
     end
 end
