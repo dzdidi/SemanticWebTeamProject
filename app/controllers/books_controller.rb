@@ -5,7 +5,14 @@ class BooksController < ApplicationController
   # GET /books.json
   def index
     @books = Book.all
+    
+
   end
+
+  def bookdata
+    
+  end
+
 
   # GET /books/1
   # GET /books/1.json
@@ -15,10 +22,13 @@ class BooksController < ApplicationController
   # GET /books/new
   def new
     @book = Book.new
-
+    @books = Book.all
     #Get the first result from sparql
     #and show the result on "new" page
     if defined? params[:keyword]
+      
+      keyword = params[:keyword]
+      
       @book.name = params[:keyword]
       sparql = SPARQL::Client.new("http://dbpedia.org/sparql")
       queryString="
@@ -53,7 +63,22 @@ class BooksController < ApplicationController
         end
         @book.abstract = solution.abstract.to_s
       end
+
+      #Yu Hsiang code
+      
+      @data = @books.searchGoolge(keyword)
+      @book.imageLink = @data['image_link']
+      @book.amazonLink = @data["amazonurl"]
+    
+
+      # need to remove the following code
+      #@data.each { |k, v| puts "Key: #{k}, Value: #{v}" }
+      #render :partial => "bookdetail", :locals => { :data => @data }
+
+
     end
+
+
   end
 
   # GET /books/1/edit
@@ -108,6 +133,6 @@ class BooksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def book_params
-      params.require(:book).permit(:name, :author, :abstract, :numberOfPages, :publisher)
+      params.require(:book).permit(:name, :author, :abstract, :numberOfPages, :publisher, :imageLink, :amazonLink) 
     end
 end
