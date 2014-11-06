@@ -19,9 +19,10 @@ ActiveRecord::Schema.define(version: 20141103131110) do
     t.string   "abstract"
     t.integer  "numberOfPages"
     t.string   "publisher"
+    t.string   "imageLink"
+    t.string   "amazonLink"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
 end
-

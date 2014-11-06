@@ -6,6 +6,8 @@ class CreateBooks < ActiveRecord::Migration
       t.string :abstract
       t.integer :numberOfPages
       t.string :publisher
+      t.string :imageLink
+      t.string :amazonLink
 
       t.timestamps
     end
