@@ -44,4 +44,8 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+<<<<<<< HEAD
+=======
+#gem 'mysql2'
+>>>>>>> merge and execute, add attributes in database, use rake migrate reset to reset database
 gem 'sparql-client'
