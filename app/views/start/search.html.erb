@@ -1,21 +1,13 @@
 <h1>Start#search</h1>
-<%# if $login %>
-	<p>Find me in app/views/start/search.html.erb</p>
-	<h2>search field here </h2>
-
+<% if $uid %>
 	<%= form_for :search do |f| %>
 	  <p>
-	    <%= f.label :book %><br>
 	    <%= f.text_field :book %>
-	  </p>
-	  <p>
-	    <%= f.submit %>
+        <%= f.submit "Search" %>
 	  </p>
 	<% end %>
-<%# else %>
-
-
+<% else %>
 	<div class="login-span">
 		<%= render("login") %>
 	</div>
-<%# end %>
+<% end %>
