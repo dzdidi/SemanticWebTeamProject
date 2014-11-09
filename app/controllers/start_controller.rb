@@ -4,16 +4,22 @@ class StartController < ApplicationController
     	book = params[:search][:book]
     end
     if !book.nil?
-    	Book.search_friends_books#(book)
-      
-      #redirect to book show method
+      @book_info = {}
+      @book_info.store("facebook", Book.search_facebook(book))
+      @book_info.store("dbpedia", Book.search_dbpedia(book))
+      @book_info.store("google_link", Book.google_link(book))
+      @book_info.store("amazon_link", Book.amazon_link(book))
+      @book_info.store("google", Book.search_google(book))
+      render :show_book
     end
-
   end
 
   def get_token_and_uid
     $uid = params[:uid]
     $token = params[:token]
     $login = true
+  end
+
+  def show_book
   end
 end

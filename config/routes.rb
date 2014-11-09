@@ -4,6 +4,8 @@ SemanticWebTeamProject::Application.routes.draw do
   get "start/search"
   post "start/search"
 
+  get "start/show_book"
+  post "start/show_book"
   
 
   # The priority is based upon order of creation: first created -> highest priority.

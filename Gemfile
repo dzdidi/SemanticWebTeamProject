@@ -45,4 +45,5 @@ end
 # gem 'debugger', group: [:development, :test]
 
 #gem 'mysql2'
+
 gem 'sparql-client'
