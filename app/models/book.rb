@@ -38,7 +38,7 @@ class Book < ActiveRecord::Base
 
   def self.google_link(book)
     book.gsub!(" ", "%20")
-    "https://play.google.com/store/search?q=#{book}c=books"
+    "https://play.google.com/store/search?q=#{book}&c=books"
   end
 
   def self.search_google(book)

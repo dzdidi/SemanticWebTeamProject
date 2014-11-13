@@ -1,3 +1,162 @@
 // Place all the styles related to the start controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$default-text-shadow-color: rgba(red, 0.6);
+$default-text-shadow-blur: 3px;
+$default-text-shadow-v-offset: 1px;
+ 
+@import "compass/css3";
+@import "compass/layout/sticky-footer";
+
+//This is for all
+body {
+  background-image:url('background.jpg');
+  @include background-size(cover);
+
+}
+.ot {
+  width: 1000px;
+  height: 100%;
+  //border: 1px solid #FF6600;
+  text-align: center;
+  margin: 0 auto;
+
+}
+.ot:before {
+  content: '';
+  display: inline-block;
+  vertical-align: middle ;
+  height: 100%;
+}
+.first_wrapper{
+	display: inline-block;
+  vertical-align: middle;
+  //border: 1px solid #888800;
+  width: 500px;
+  height: 500px;
+  margin-top: 240px;
+}
+// This is for search page
+.has-custom-shadow {
+  @include text-shadow(rgba(blue, 0.2) 1px 1px 0, rgba(blue, 0.2) 2px 2px 0, rgba(blue, 0.2) 3px 3px 0);
+  color:#FFFFFF
+}
+
+.button_wrapper{
+  padding: 10px;
+}
+
+.searchbar{
+  width:500px;
+  height:30px;
+  font-size:1.5em
+}
+// This is for show book
+.second_wrapper{
+  display: inline-block;
+  vertical-align: middle;
+  width: 500px;
+  height: 745px;
+  //border: 1px solid #FF0000;
+}
+$book_cover_h:550px;
+$common_width:390px;
+$cover_top:10px;
+
+.book_cover{
+  position:relative;
+  width: $common_width;
+  height: $book_cover_h;
+  //border: 1px solid #000000;
+  top:15%;
+  left:-300px; 
+
+  .imagestyle{
+    width: 100%;
+    height: 100%;
+    @include box-shadow(white 2px 2px 10px);
+  }
+    
+}
+
+.book_info{
+  position:relative;
+  //width: $common_width - 100px;
+  width:700px;
+  height: $book_cover_h - 50px;
+  //border: 1px solid #FF66FF;
+  top:-400px;
+  left: 46%;
+  display:none;
+  background: #FFFFFF;
+  @include border-radius(30px);
+  .title{
+    position:relative;
+    top:40px;
+    font-weight:bolder;
+    // right:10px;
+    text-align:center;
+    line-height: 40px;
+    font-size:2em;
+  }
+  .author{
+    position:relative;
+    font-size:1.3em;
+    margin-top: 70px;
+    font-style: italic;
+  }
+  .content{
+    position:relative;
+    width: 500px;
+    height: 270px;
+    font-size: 1.5em;
+    margin-top: 30px;
+    line-height: 30px;
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+    overflow-y: scroll;
+    display:none;
+  }
+  .otherlink{
+    position:absolute;
+    width: 300px;
+    height: 50px;
+    //background:#000000;
+    margin-bottom:10px;
+    bottom:0px;
+    .link{
+      background:#FFFFFF;
+    }
+    
+  }
+}
+#book_footer{
+  background: #000000;
+  width: 100%;
+  height:30px;
+  color:#FFFFFF;
+  @include sticky-footer(54px);
+}
+.outside{
+  &:hover { cursor: pointer; }
+  width: 50px;
+  height: 50px;
+}
+#facebookinfo{
+  position:absolute;
+  display: none;
+  top: 50px;
+  right:230px;
+  width: 500px;
+  height: 500px;
+  overflow-y: scroll;
+  border: 1px solid #FF66FF;
+  background: #000000;
+  @include border-radius(30px);
+}
+#FBclose{
+  position:absolute;
+  bottom:10px;
+  right:30px;
+}
