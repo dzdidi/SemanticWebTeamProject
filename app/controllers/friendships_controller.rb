@@ -13,4 +13,8 @@ class FriendshipsController < ApplicationController
     @friendship.destroy
     redirect_to root_url, :notice => "Successfully destroyed friendship."
   end
+
+  def index
+    @friendships = Friendship.all
+  end
 end
