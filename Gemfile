@@ -48,3 +48,7 @@ end
 #gem 'mysql2'
 
 gem 'sparql-client'
+
+gem 'nifty-generators'
+
+gem "mocha", group: :test
