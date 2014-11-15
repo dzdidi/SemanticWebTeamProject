@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141112211045) do
+ActiveRecord::Schema.define(version: 20141113093030) do
 
   create_table "books", force: true do |t|
     t.string   "name"
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 20141112211045) do
     t.string   "abstract"
     t.integer  "numberOfPages"
     t.string   "publisher"
+    t.string   "imageLink"
+    t.string   "amazonLink"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -30,6 +32,13 @@ ActiveRecord::Schema.define(version: 20141112211045) do
     t.datetime "updated_at"
   end
 
+  create_table "user_book_relations", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "book_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", force: true do |t|
     t.string   "login_id"
     t.string   "login_pwd"
@@ -37,13 +46,6 @@ ActiveRecord::Schema.define(version: 20141112211045) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "image_url"
-  end
-
-  create_table "users_books", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "book_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
 end

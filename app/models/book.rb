@@ -1,6 +1,7 @@
 require "net/http"
 class Book < ActiveRecord::Base
   has_many :user_book_relation
+  attr_accessible :name, :author, :abstract, :numberOfPages, :publisher, :image_link, :amazon_link
 
   OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE #stupid trick
 

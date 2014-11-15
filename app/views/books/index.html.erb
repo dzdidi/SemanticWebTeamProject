@@ -13,13 +13,6 @@
     </tr>
   </thead>
   <tbody>
-  <form action = "/books/new" >
-    Search:
-    <input type="text" name="keyword">
-    <input type="submit"/>
-  </form>
-  </tbody>
-  <tbody>
     <% @books.each do |book| %>
       <tr>
         <td><%= book.name %></td>
