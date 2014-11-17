@@ -1,8 +1,9 @@
 class StartController < ApplicationController
   def search
-  	if !params[:search].nil?
+    if !params[:search].nil?
     	book = params[:search][:book]
     end
+    
     if !book.nil?
       @book_info = {}
       @book_info.store("facebook", Book.search_facebook(book))
@@ -12,6 +13,8 @@ class StartController < ApplicationController
       @book_info.store("google", Book.search_google(book))
       render :show_book
     end
+    
+    #render :show_book
   end
 
   def get_token_and_uid

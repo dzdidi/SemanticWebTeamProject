@@ -1,6 +1,60 @@
-<h2>Access to variables throw @book_info[ -key- ]</h2>
+<div class="second_wrapper">
+	<div class="book_cover" >
+		<%= image_tag @book_info.fetch("google").fetch("image_link"), :class =>"imagestyle" %>
+	</div>
+	
+	<div class="book_info">
+		<div class="title"><%= @book_info.fetch("google").fetch("title") %></div>
+		<div class="author"><%= @book_info.fetch("dbpedia").fetch("author") %></div>
+		<div class="content">
+			<%= @book_info.fetch("dbpedia").fetch("abstract") %>
+		</div>
+		<div class="otherlink">
+			<span>
+				<a class="link" href= <%= @book_info.fetch("google_link") %> >
+					<img u="image" class="outside" src=<%=asset_path "google.png"%> />
+				</a>
+			</span>
+			<span>
+				<a class="link" href= <%= @book_info.fetch("amazon_link") %> >
+					<img u="image" class="outside" src=<%=asset_path "Amazon.png"%> />
+				</a>
+			</span>
+			<span id="facebook">
+				<img u="image" class="outside" src=<%=asset_path "Facebook.png"%> />
+			</span>
+		</div>
+		
+	</div>
 
-<h3>Type of keys:</h3>
-<% @book_info.each_key do |key|%>
-	&nbsp - &nbsp<%= key %><br/>
-<% end %>
+	<div id="facebookinfo">
+		<div id="FBclose" class="btn btn-default btn-raised">Close</div>
+	</div>
+	
+
+	<script>
+		$('.book_cover').addClass('animated bounceInLeft');
+		$('.book_info').show().addClass('animated bounceInRight');
+		setTimeout(function () {
+    		$('.content').show().addClass('animated fadeIn');
+    		}, 1500
+		);
+		$('.outside').hover(
+
+			function(){
+		  		$(this).addClass('animated bounce');
+		  	},
+		  	function(){
+		  		$(this).removeClass('animated bounce');	
+		  	}		  	
+		);
+		$('#facebook').click(function() {
+  			$('#facebookinfo').show().removeClass('animated bounceOutRight').addClass('animated bounceInRight');
+		});
+		$('#FBclose').click(function() {
+  			$('#facebookinfo').removeClass('animated bounceInRight').addClass('animated bounceOutRight');
+		});
+	</script>
+
+</div>
+

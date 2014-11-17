@@ -7,7 +7,20 @@ gem 'rails', '4.0.2'
 gem 'sqlite3'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.0'
+gem 'sass-rails'
+gem "haml-rails"
+# Use compass framework
+gem "compass-rails", "~> 1.1.2"
+# Use material design
+gem 'bootstrap-material-design'
+# Use to monitor
+gem 'rb-fsevent'
+gem 'guard-livereload'
+gem  'companimation'
+
+#need to downgrade in order to fix 
+#running bundle update sprockets.
+gem "sprockets", "2.11.0"
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
