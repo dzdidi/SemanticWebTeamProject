@@ -1,13 +1,18 @@
-<h1>Start#search</h1>
-<% if $uid %>
-	<%= form_for :search do |f| %>
-	  <p>
-	    <%= f.text_field :book %>
-        <%= f.submit "Search" %>
-	  </p>
+<div class="first_wrapper">
+	<h1 class='has-custom-shadow'>Start#search</h1>
+	<% if true %>
+	<%# if $uid %>
+		<div>
+			<%= form_for :search do |f| %>
+			  <p>
+			    <div><%= f.text_field :book,:class => 'searchbar' %></div>
+		        <div class="button_wrapper"><%= f.submit "Search",:class => 'btn btn-default btn-raised'%></div>
+			  </p>
+			<% end %>
+		</div>
+	<% else %>
+		<div class="login-span">
+			<%= render("login") %>
+		</div>
 	<% end %>
-<% else %>
-	<div class="login-span">
-		<%= render("login") %>
-	</div>
-<% end %>
+</div>

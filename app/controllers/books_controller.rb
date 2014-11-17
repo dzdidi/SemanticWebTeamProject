@@ -3,9 +3,11 @@ class BooksController < ApplicationController
 
   # GET /books
   # GET /books.json
+
   def index 
     @books = Book.all
   end
+
 
   # GET /books/1
   # GET /books/1.json
@@ -39,6 +41,4 @@ class BooksController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_book   
     end
-
-    
 end

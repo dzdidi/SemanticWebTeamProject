@@ -1,18 +1,25 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>SemanticWebTeamProject</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-
-
-
-
-
-<%= yield %>
-
-</body>
+	<head>
+	  <title>SemanticWebTeamProject</title>
+		<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="animate.css">
+	  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+	  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+	  <%= csrf_meta_tags %>
+	</head>
+	<script>
+    	$(document).ready(function() {
+        	$.material.init();
+        });
+	</script>
+	<body>
+		<div class="ot">
+			<%= yield %>
+		</div>
+		<div id="book_footer">
+		Copyright © Semantic Web Development
+		</div>
+		
+	</body>
 </html>

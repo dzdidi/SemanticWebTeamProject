@@ -1,5 +1,6 @@
 require "net/http"
 class Book < ActiveRecord::Base
+
   has_many :user_book_relation
   attr_accessible :name, :author, :abstract, :numberOfPages, :publisher, :image_link, :amazon_link
 
@@ -20,7 +21,7 @@ class Book < ActiveRecord::Base
 
   def self.google_link(book)
     book.gsub!(" ", "%20")
-    "https://play.google.com/store/search?q=#{book}c=books"
+    "https://play.google.com/store/search?q=#{book}&c=books"
   end
 
   def self.search_google(book)
