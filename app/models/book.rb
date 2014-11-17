@@ -1,25 +1,8 @@
 require "net/http"
 class Book < ActiveRecord::Base
 
-	def Book.searchGoolge(title)
-		#https://github.com/zeantsoi/GoogleBooks
-		
-		#from here
-		
-		books = GoogleBooks.search(title) 
-		book = books.first
-		data = book.sale_info
-		data["title"] = book.title
-		data["image_link"] = book.image_link
-		data["amazonurl"] = "http://www.amazon.com/s/ref=nb_sb_ss_c_0_4?url=search-alias%3Dstripbooks&field-keywords="+title.tr(" ","+");
-
-		
-		#finish
-		
-		return data
-		#y = data.each { |k, v| puts "Key: #{k}, Value: #{v}" }
-	end
-	
+  has_many :user_book_relation
+  attr_accessible :name, :author, :abstract, :numberOfPages, :publisher, :image_link, :amazon_link
 
   OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE #stupid trick
 

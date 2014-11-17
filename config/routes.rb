@@ -1,4 +1,5 @@
-SemanticWebTeamProject::Application.routes.draw do
+SemanticWebTeamProject::Application.routes.draw do  resources :users
+  resources :friendships
   resources :books
 
   get "start/search"
