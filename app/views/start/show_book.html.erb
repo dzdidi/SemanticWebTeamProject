@@ -1,6 +1,7 @@
 <div class="second_wrapper">
 	<div class="book_cover" >
 		<%= image_tag @book_info.fetch("google").fetch("image_link"), :class =>"imagestyle" %>
+		
 	</div>
 	
 	<div class="book_info">
@@ -28,6 +29,22 @@
 	</div>
 
 	<div id="facebookinfo">
+		<div id="FBtitle">Friends who like it</div>
+		<div id="friendlist">
+			
+			<% puts @book_info.fetch("friendlist")[0]["login_id"] %>
+			<table class="tablestyle">
+				<% for index in 0 ... @book_info.fetch("friendlist").size %>
+						
+					<tr>
+						<td><%=image_tag @book_info.fetch("friendlist")[index]["image_url"],:class =>"friendimage" %> </td>
+						<td><span class="friendname"><%= @book_info.fetch("friendlist")[index]["name"].to_s %></span></td>
+					</tr>
+				<% end %>
+			</table>
+			
+		</div>
+
 		<div id="FBclose" class="btn btn-default btn-raised">Close</div>
 	</div>
 	
@@ -49,11 +66,16 @@
 		  	}		  	
 		);
 		$('#facebook').click(function() {
-  			$('#facebookinfo').show().removeClass('animated bounceOutRight').addClass('animated bounceInRight');
+  			$('.overlay').show();
+  			$('#facebookinfo').show().removeClass('animated bounceOutUp').addClass('animated bounceInDown');
+  			
 		});
 		$('#FBclose').click(function() {
-  			$('#facebookinfo').removeClass('animated bounceInRight').addClass('animated bounceOutRight');
+  			$('#facebookinfo').removeClass('animated bounceInDown').addClass('animated bounceOutUp');
+  			$('.overlay').hide();
 		});
+
+
 	</script>
 
 </div>

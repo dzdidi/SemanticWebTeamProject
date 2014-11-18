@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :user_id, :login_id, :login_pwd, :name
+  attr_accessible :user_id, :login_id, :login_pwd, :name,:image_url
   
   has_many :friendships
   has_many :friends, :through => :friendships
