@@ -21,10 +21,11 @@ class Book < ActiveRecord::Base
 
   def self.google_link(book)
     book.gsub!(" ", "%20")
-    "https://play.google.com/store/search?q=#{book}&c=books"
+    google_url = "https://play.google.com/store/search?q=#{book}&c=books"
   end
 
   def self.search_google(book)
+     
      res = {}
      books = GoogleBooks.search(book) 
      book = books.first
@@ -32,7 +33,23 @@ class Book < ActiveRecord::Base
      res.store("title", book.title)
      res.store("image_link", book.image_link)
      res   
+     
   end
+
+  def self.search_friend(book,userid)
+    #find book's id
+    bookid = 1
+    #get the friends of the user =>userid
+    id = User.where(login_id: userid).pluck(:id)
+    #get the friends list
+    friendlist = Friendship.where(user_id: id).pluck(:friend_id)
+    #find friend also read the book
+    readbookfriends = UserBookRelation.where(user_id: friendlist,book_id: bookid).pluck(:user_id)
+    #return friend list 
+    friendsdata = User.where(id: readbookfriends).all
+    
+  end
+
 
   def self.search_dbpedia(book)
     res = {}

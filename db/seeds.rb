@@ -22,7 +22,7 @@ User.create(
 	:login_id => 'yuhsiang123',
   	:login_pwd => 'yuhsiang123',
 	:name => 'Yuhsiang',
-	:image_url =>   '/images/yuhsiang.jpg'
+	:image_url =>   '/images/yuchang.jpg'
 )
 # . . .
 User.create(
