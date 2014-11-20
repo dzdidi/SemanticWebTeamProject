@@ -1,82 +1,78 @@
 <div class="second_wrapper">
-	<div class="book_cover" >
-		<%= image_tag @book_info.fetch("google").fetch("image_link"), :class =>"imagestyle" %>
-		
-	</div>
-	
-	<div class="book_info">
-		<div class="title"><%= @book_info.fetch("google").fetch("title") %></div>
-		<div class="author"><%= @book_info.fetch("dbpedia").fetch("author") %></div>
-		<div class="content">
-			<%= @book_info.fetch("dbpedia").fetch("abstract") %>
-		</div>
-		<div class="otherlink">
-			<span>
-				<a class="link" href= <%= @book_info.fetch("google_link") %> >
-					<img u="image" class="outside" src=<%=asset_path "google.png"%> />
-				</a>
-			</span>
-			<span>
-				<a class="link" href= <%= @book_info.fetch("amazon_link") %> >
-					<img u="image" class="outside" src=<%=asset_path "Amazon.png"%> />
-				</a>
-			</span>
-			<span id="facebook">
-				<img u="image" class="outside" src=<%=asset_path "Facebook.png"%> />
-			</span>
-		</div>
-		
-	</div>
+  <div class="book_cover" >
+    <%= image_tag @book_info.fetch("google").fetch("image_link"), :class =>"imagestyle" %>
+  </div>
+  
+  <div class="book_info">
+    <div class="title"><%= @book_info["google"]["title"] if @book_info["google"]["title"] %></div>
+    <div class="author"><%= @book_info["dbpedia"]["author"] if @book_info["dbpedia"]["author"] %></div>
+    <div class="content">
+      <% if @book_info["dbpedia"]["abstract"] %>
+        <%= @book_info["dbpedia"]["abstract"]  %>
+      <% else %>
+        <p> Try to guess by title </p>
+      <% end %>
+    </div>
+    <div class="otherlink">
+      <span>
+        <a class="link" href= <%= @book_info["google_link"] if @book_info["google_link"] %> >
+          <img u="image" class="outside" src=<%=asset_path "google.png"%> />
+        </a>
+      </span>
+      <span>
+        <a class="link" href= <%= @book_info["amazon_link"] if @book_info["amazon_link"] %> >
+          <img u="image" class="outside" src=<%=asset_path "Amazon.png"%> />
+        </a>
+      </span>
+      <span id="facebook">
+        <img u="image" class="outside" src=<%=asset_path "Facebook.png"%> />
+      </span>
+    </div>
+  </div>
 
-	<div id="facebookinfo">
-		<div id="FBtitle">Friends who like it</div>
-		<div id="friendlist">
-			
-			<% puts @book_info.fetch("friendlist")[0]["login_id"] %>
-			<table class="tablestyle">
-				<% for index in 0 ... @book_info.fetch("friendlist").size %>
-						
-					<tr>
-						<td><%=image_tag @book_info.fetch("friendlist")[index]["image_url"],:class =>"friendimage" %> </td>
-						<td><span class="friendname"><%= @book_info.fetch("friendlist")[index]["name"].to_s %></span></td>
-					</tr>
-				<% end %>
-			</table>
-			
-		</div>
+  <div id="facebookinfo">
+    <div id="FBtitle">Friends who like it</div>
+    <div id="friendlist">
+      <table class="tablestyle">
+        <% if @book_info["friendlist"].size > 0 %>
+          <% @book_info["friendlist"].each do |id| %>
+            <tr>
+              <td><%=image_tag User.find(id)["image_url"], :class =>"friendimage" %> </td>
+              <td><span class="friendname"><%= User.find(id)["name"].to_s %></span></td>
+            </tr>
+          <% end %>
+          <% else %>
+           <p>Be the first one! </p>
+          <% end %>
+      </table>   
+    </div>
+    <div id="FBclose" class="btn btn-default btn-raised">Close</div>
+  </div>
+  
 
-		<div id="FBclose" class="btn btn-default btn-raised">Close</div>
-	</div>
-	
-
-	<script>
-		$('.book_cover').addClass('animated bounceInLeft');
-		$('.book_info').show().addClass('animated bounceInRight');
-		setTimeout(function () {
-    		$('.content').show().addClass('animated fadeIn');
-    		}, 1500
-		);
-		$('.outside').hover(
-
-			function(){
-		  		$(this).addClass('animated bounce');
-		  	},
-		  	function(){
-		  		$(this).removeClass('animated bounce');	
-		  	}		  	
-		);
-		$('#facebook').click(function() {
-  			$('.overlay').show();
-  			$('#facebookinfo').show().removeClass('animated bounceOutUp').addClass('animated bounceInDown');
-  			
-		});
-		$('#FBclose').click(function() {
-  			$('#facebookinfo').removeClass('animated bounceInDown').addClass('animated bounceOutUp');
-  			$('.overlay').hide();
-		});
-
-
-	</script>
-
+  <script>
+    $('.book_cover').addClass('animated bounceInLeft');
+    $('.book_info').show().addClass('animated bounceInRight');
+    setTimeout(function () {
+        $('.content').show().addClass('animated fadeIn');
+        }, 1500
+    );
+    $('.outside').hover(
+      function(){
+          $(this).addClass('animated bounce');
+        },
+        function(){
+          $(this).removeClass('animated bounce'); 
+        }       
+    );
+    $('#facebook').click(function() {
+        $('.overlay').show();
+        $('#facebookinfo').show().removeClass('animated bounceOutUp').addClass('animated bounceInDown');
+    });
+    $('#FBclose').click(function() {
+        $('#facebookinfo').removeClass('animated bounceInDown').addClass('animated bounceOutUp');
+        $('.overlay').hide();
+    });
+  </script>
 </div>
 
