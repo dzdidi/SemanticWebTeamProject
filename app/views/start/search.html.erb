@@ -1,8 +1,8 @@
 <div class="first_wrapper">
 	<h1 class='has-custom-shadow'>Start#search</h1>
-	<% if true %>
-	<%# if $uid %>
+	<% if $uid %>
 		<div>
+			<h1><%= $uid %></h1>
 			<%= form_for :search do |f| %>
 			  <p>
 			    <div><%= f.text_field :book,:class => 'searchbar' %></div>

@@ -54,7 +54,6 @@ class Book < ActiveRecord::Base
     readbookfriends = UserBookRelation.where(user_id: friendlist,book_id: bookid).pluck(:user_id)
     #return friend list 
     friendsdata = User.where(id: readbookfriends).all
-    
   end
 
 
