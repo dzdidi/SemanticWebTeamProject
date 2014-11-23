@@ -8,7 +8,10 @@ class StartController < ApplicationController
       # please add your facebook id ad link them with local users in a same way
       if $uid == "740053999382587"
         luid = User.find_by_login_id("denis123").id 
+      elsif $uid == "10202860865353436"
+        luid = User.find_by_login_id("yuhsiang123").id
       end
+
       @book_info = {}
       @book_info.store("dbpedia", Book.search_dbpedia(book))
       @book_info.store("google_link", Book.google_link(book))

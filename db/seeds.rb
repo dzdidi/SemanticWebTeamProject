@@ -153,8 +153,10 @@ user1.friendships.create(:user_id => user1.id, :friend_id => user3.id)
 user1.friendships.create(:user_id => user1.id, :friend_id => user4.id)
 user1.friendships.create(:user_id => user1.id, :friend_id => user5.id)
 #user2
-user2.friendships.create(:user_id => user1.id, :friend_id => user3.id)
-user2.friendships.create(:user_id => user1.id, :friend_id => user4.id)
+user2.friendships.create(:user_id => user2.id, :friend_id => user1.id)
+user2.friendships.create(:user_id => user2.id, :friend_id => user3.id)
+user2.friendships.create(:user_id => user2.id, :friend_id => user4.id)
+user2.friendships.create(:user_id => user2.id, :friend_id => user5.id)
 #user3 set from user1/user2
 #user4 set from user1/user2
 #user5 set from user1
