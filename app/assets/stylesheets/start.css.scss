@@ -10,16 +10,16 @@ $default-text-shadow-v-offset: 1px;
 
 //This is for all
 body {
-
   background-image:url('background.jpg');
+  background-attachment:fixed;
+  overflow: hidden;
   @include background-size(cover);
-
 }
 
 
 
 .ot {
-  width: 1000px;
+  width: 100%;
   height: 100%;
   //border: 1px solid #FF6600;
   text-align: center;
@@ -90,7 +90,7 @@ $cover_top:10px;
   height: $book_cover_h - 50px;
   //border: 1px solid #FF66FF;
   top:-400px;
-  left: 46%;
+  left: 30%;
   display:none;
   background: #FFFFFF;
   @include border-radius(30px);
