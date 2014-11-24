@@ -10,16 +10,16 @@ $default-text-shadow-v-offset: 1px;
 
 //This is for all
 body {
-
   background-image:url('background.jpg');
+  background-attachment:fixed;
+  overflow: hidden;
   @include background-size(cover);
-
 }
 
 
 
 .ot {
-  width: 1000px;
+  width: 100%;
   height: 100%;
   //border: 1px solid #FF6600;
   text-align: center;
@@ -87,10 +87,10 @@ $cover_top:10px;
   position:relative;
   //width: $common_width - 100px;
   width:700px;
-  height: $book_cover_h - 50px;
+  height: $book_cover_h - 100px;
   //border: 1px solid #FF66FF;
-  top:-400px;
-  left: 46%;
+  top:-440px;
+  left: 30%;
   display:none;
   background: #FFFFFF;
   @include border-radius(30px);
@@ -112,7 +112,7 @@ $cover_top:10px;
   .content{
     position:relative;
     width: 500px;
-    height: 270px;
+    height: 220px;
     font-size: 1.5em;
     margin-top: 30px;
     line-height: 30px;
@@ -147,29 +147,35 @@ $cover_top:10px;
   width: 50px;
   height: 50px;
 }
+.fbicon{
+  &:hover { cursor: pointer; }
+  width: 40px;
+  height: 40px;
+}
 #facebookinfo{
   position:absolute;
   display: none;
-  top: 90px;
-  margin-left: auto;
-  margin-right: auto;
-  width: 420px;
-  height: 500px;
+  //top: 90px;
+  bottom:110px;
+  margin-left: 310px;
+  //margin-right:1000px;
+  //margin-right: auto;
+  width: 400px;
+  height: 100px;
   //border: 1px solid #FF0000;
   background: #FFFFFF;
-  z-index: 10;
   @include border-radius(10px);
 }
 #FBtitle{
   text-align: left;
   padding-left:10px;
-  width: 420px;
+  width: 400px;
   height: 50px;
   vertical-align: middle;
   line-height: 50px;
   font-weight:bolder;
   font-size: 1em;
-  background: #F5F5F5;
+  background: #CCDDFF;
   @include border-radius(4px, 4px);
 
 }
@@ -178,31 +184,31 @@ $cover_top:10px;
 
   top: 50px;
   right:0px;
-  width: 420px;
-  height: 400px;
-  //border: 1px solid #FF0000;
+  width: 400px;
+  height: 100px;
+  //border: 1px solid #000000;
   background: #FFFFFF;
   @include border-radius(10px);
   overflow-y: scroll;
-  
+  overflow-x: hidden;
   .friendimage{
     display: inline-block;
     position:relative;
     //left:-180px;
-    width: 90px;
-    height: 90px;
+    width: 50px;
+    height: 50px;
     @include border-radius(10px);
     //border: 1px solid #00FF00;
     background:#000000;
     .face{
-      width: 80px;
-      height: 80px;
+      width: 40px;
+      height: 40px;
     }
   }
   .friendname{
     display: inline-block;
     position:relative;
-    width: 310px;
+    width: 400px;
     height: 50px;
     top:10px;
     text-align: left;
@@ -216,11 +222,6 @@ $cover_top:10px;
 .FBbody{
   display: inline-block;
 }
-#FBclose{
-  position:absolute;
-  bottom:10px;
-  right:30px;
-}
 table{
   border: 0px solid #000000;
   align: left;
@@ -232,13 +233,11 @@ td{
    padding:3px 5px 3px 5px;//內文不會貼格子
    border-bottom: 1px solid #DDDDDD;
 } 
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  display:none;
-  height: 100%;
-  width: 100%;
-  //z-index: 9;
-  background-color: rgba(0,0,0,0.5);
+.returnstyle{
+  position: absolute;
+  width:70px;
+  height:70px;
+  top: 40px;
+  right:100px;
+  &:hover { cursor: pointer; }
 }
