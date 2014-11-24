@@ -1,0 +1,43 @@
+The Hunger Games
+To Kill a Mockingbird
+Pride and Prejudice
+Gone with the Wind
+Animal Farm
+The Giving Tree
+Wuthering Heights
+Memoirs of a Geisha
+The Da Vinci Code
+Les Misérables
+Lord of the Flies
+The Picture of Dorian Gray
+Crime and Punishment
+Anne of Green Gables
+The Alchemist
+The Fault in Our Stars
+Fahrenheit 451
+Of Mice and Men
+Dracula
+A Wrinkle in Time
+The Lord of the Rings
+Northern Lights
+
+Fixed Bugs:
+Bug_1: Unexpected leading or trailing spaces 
+Bug_2: Single quotation marks
+#The Hitchhiker's Guide to the Galaxy
+#Charlotte's Web
+#The Time Traveler's Wife 
+#Ender's Game
+#Alice's Adventures in Wonderland
+Bug_3: Unsatisfaied Search Constraints
+#(not classified as Book)The Chronicles of Narnia
+#(has no dbpprop:author)The Book Thief
+#(not classified as Book)Romeo and Juliet 
+#(not classified as Book)Harry Potter and the Order of the Phoenix
+
+
+
+
+
+
+

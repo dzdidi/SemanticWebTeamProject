@@ -40,6 +40,13 @@ class Book < ActiveRecord::Base
   end
 
   def self.search_dbpedia(book)
+    book = book.lstrip
+    book = book.rstrip
+    ###Oh my god, I want to insert a backslash (\) before each single quotation mark(') 
+    ###But "\\\'" doesn't work!!!
+    book.gsub!(/'/,"%\'")
+    book.gsub!(/%/,"\\")
+    ###
     res = {}
     sparql = SPARQL::Client.new("http://dbpedia.org/sparql")
     queryString="
@@ -52,10 +59,10 @@ class Book < ActiveRecord::Base
       where {
         ?book rdf:type ontology:Book;
               dbpprop:name ?name;   
-              ontology:abstract ?abstract;
-              dbpprop:author ?author.
+              ontology:abstract ?abstract.
         OPTIONAL {
-        ?book ontology:numberOfPages ?numberOfPages;
+        ?book dbpprop:author ?author;
+              ontology:numberOfPages ?numberOfPages;
               dbpprop:publisher ?publisher
         }
         FILTER (langMatches(lang(?abstract), 'EN'))
