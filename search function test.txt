@@ -29,12 +29,15 @@ Bug_2: Single quotation marks
 #The Time Traveler's Wife 
 #Ender's Game
 #Alice's Adventures in Wonderland
+
+Partly fixed Bugs:
 Bug_3: Unsatisfaied Search Constraints
+(fixed)#(has no dbpprop:author)The Book Thief
 #(not classified as Book)The Chronicles of Narnia
-#(has no dbpprop:author)The Book Thief
 #(not classified as Book)Romeo and Juliet 
 #(not classified as Book)Harry Potter and the Order of the Phoenix
-
+If a book does not have rdf:type ontology:Book, 
+I don't know how to recognize it.
 
 
 
