@@ -28,6 +28,7 @@ class StartController < ApplicationController
     $uid = params[:uid]
     $token = params[:token]
     $login = true
+    head :ok
   end
 
   def show_book
