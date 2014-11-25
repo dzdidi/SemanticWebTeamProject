@@ -19,8 +19,6 @@ ActiveRecord::Schema.define(version: 20141113093030) do
     t.string   "abstract"
     t.integer  "numberOfPages"
     t.string   "publisher"
-    t.string   "imageLink"
-    t.string   "amazonLink"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -46,6 +44,13 @@ ActiveRecord::Schema.define(version: 20141113093030) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "image_url"
+  end
+
+  create_table "users_books", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "book_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end
