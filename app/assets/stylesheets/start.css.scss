@@ -14,6 +14,7 @@ body {
   background-attachment:fixed;
   overflow: hidden;
   @include background-size(cover);
+  overflow: auto;
 }
 
 .first_wrapper{
@@ -44,14 +45,15 @@ body {
 }
 
 .book_cover{
-  padding-right: 10px;
-  padding-left: 10px;
+  padding: 10px;
 }
 
 .abstract{
-  background-color: #EBEBE0; 
+  font-color: #2F0E07;
+  background-color: #F9F1C0; 
   padding-right: 10px;
   padding-left: 10px;
+  overflow: auto;   
 }
 
 .text{
@@ -70,7 +72,8 @@ body {
 .tablestyle{
   width: 100%;
   text-align: center;
-  background-color: #EBEBE0;
+  background-color: #F9F1C0;
+  overflow: auto;
 }
 
 .friendimage{
@@ -84,7 +87,7 @@ body {
 
 td{
   vertical-align: top;
-  background-color: #EBEBE0;
+  background-color:  #F9F1C0;
 }
 
 table, th, td {
@@ -94,11 +97,8 @@ table, th, td {
 
 .otherlink{
   text-align: right;
-  width: 70%;
-  margin-left: 30%;
   height: 50px;
-  margin-bottom:10px;
-  bottom:0px;
+  margin-top:1%;
 }
 
 .back{
