@@ -70,7 +70,7 @@ class Book < ActiveRecord::Base
       }LIMIT 1"
     query = sparql.query(queryString)
     query.each_solution do |solution|
-      res.store("author", solution.author) if solution.bound?('author')
+      res.store("author", solution.author.to_s.split("/").last.split("_").join(" ")) if solution.bound?('author')
       res.store("abstract", solution.abstract.to_s)
     end
     res

@@ -1,9 +1,7 @@
 <div class="first_wrapper">
   <h1 class='has-custom-shadow'>Start#search</h1>
-  <%= puts "=========-----====-----====-----====-----====-----====-----" %>
-  <%= puts $uid %>
   <% if $uid %>
-    <div>
+    <div class="search">
       <%= form_for :search do |f| %>
         <p>
           <div><%= f.text_field :book,:class => 'searchbar' %></div>

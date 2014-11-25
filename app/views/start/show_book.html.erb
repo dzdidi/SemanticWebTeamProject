@@ -1,80 +1,53 @@
-<div class="second_wrapper">
-  <div>
-      <%= link_to image_tag("returnicon.png",:class =>"returnstyle"),start_search_path %>
+<div class="content">
+<table>
+  <td widht=40%>
+    <div class="book_cover" >
+      <%= image_tag @book_info["google"]["image_link"], :class =>"imagestyle" %>
+    </div>
+  </td>
+  <td width="50%">
+    <div class="abstract">
+      <div class="title_and_author">
+        <%= '"'<< @book_info["google"]["title"] +'"' if @book_info["google"]["title"] %>
+        <%= "by "<< @book_info["dbpedia"]["author"] if @book_info["dbpedia"]["author"] %>
+      </div>
+      <div class="text">
+        <% if @book_info["dbpedia"]["abstract"] %>
+          <%= @book_info["dbpedia"]["abstract"]  %>
+        <% else %>
+          <p> Try to guess by title </p>
+        <% end %>
+      </div>
+      <div class="otherlink">
+        <span>
+          <a href= <%= @book_info["google_link"] if @book_info["google_link"] %> >
+            <img u="image" class="outside" src=<%=asset_path "google.png"%> />
+          </a>
+        </span>
+        <span>
+          <a href= <%= @book_info["amazon_link"] if @book_info["amazon_link"] %> >
+            <img u="image" class="outside" src=<%=asset_path "Amazon.png"%> />
+          </a>
+        </span>
+      </div>
+      <div class="back">
+        <%= link_to_function "Back", "history.back()" %>
+      </div>
+    </div>
 
-  </div>
-  <div class="book_cover" >
-    <%= image_tag @book_info.fetch("google").fetch("image_link"), :class =>"imagestyle" %>
-  </div>
-  
-  <div class="book_info">
-    <div class="title"><%= @book_info["google"]["title"] if @book_info["google"]["title"] %></div>
-    <div class="author"><%= @book_info["dbpedia"]["author"] if @book_info["dbpedia"]["author"] %></div>
-    <div class="content">
-      <% if @book_info["dbpedia"]["abstract"] %>
-        <%= @book_info["dbpedia"]["abstract"]  %>
-      <% else %>
-        <p> Try to guess by title </p>
-      <% end %>
-    </div>
-    <div class="otherlink">
-      <span>
-        <a class="link" href= <%= @book_info["google_link"] if @book_info["google_link"] %> >
-          <img u="image" class="outside" src=<%=asset_path "google.png"%> />
-        </a>
-      </span>
-      <span>
-        <a class="link" href= <%= @book_info["amazon_link"] if @book_info["amazon_link"] %> >
-          <img u="image" class="outside" src=<%=asset_path "Amazon.png"%> />
-        </a>
-      </span>
-    </div>
-  </div>
-
-  <div id="facebookinfo">
-    <div id="FBtitle">
-      
-      <img u="image" class="fbicon" src=<%=asset_path "Facebook.png"%> />
-      Friends who like it 
-    </div>
-    
-    <div id="friendlist">
-      
-      <table class="tablestyle">
-        <% if @book_info["friendlist"].size > 0 %>
-          <% @book_info["friendlist"].each do |id| %>
-            <tr>
-              <td><%=image_tag User.find(id)["image_url"], :class =>"friendimage" %> </td>
-              <td><span class="friendname"><%= User.find(id)["name"].to_s %></span></td>
-            </tr>
-          <% end %>
+    </td>
+    <td width="10%">
+      <div class="tablestyle">
+        <table>
+          <% if @book_info["friendlist"].size > 0 %>
+            <% @book_info["friendlist"].each do |id| %>
+               <tr><%=image_tag User.find(id)["image_url"], :class =>"friendimage" %></tr>
+            <% end %>
           <% else %>
-           <p>Be the first one! </p>
+            <p>Be the first one! </p>
           <% end %>
-      </table>
-
-
-    </div>
-  </div>
-  
-
-  <script>
-    $('.book_cover').addClass('animated bounceInLeft');
-    $('#facebookinfo').show().addClass('animated bounceInUp');
-    $('.book_info').show().addClass('animated bounceInRight');
-    setTimeout(function () {
-        $('.content').show().addClass('animated fadeIn');
-        }, 1500
-    );
-    $('.outside').hover(
-      function(){
-          $(this).addClass('animated bounce');
-        },
-        function(){
-          $(this).removeClass('animated bounce'); 
-        }       
-    );
-   
-  </script>
+        </table>
+      </div>
+    </td>
+  </table>
 </div>
-

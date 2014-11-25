@@ -14,31 +14,12 @@ body {
   background-attachment:fixed;
   overflow: hidden;
   @include background-size(cover);
+  overflow: auto;
 }
 
-
-
-.ot {
-  width: 100%;
-  height: 100%;
-  //border: 1px solid #FF6600;
-  text-align: center;
-  margin: 0 auto;
-
-}
-.ot:before {
-  content: '';
-  display: inline-block;
-  vertical-align: middle ;
-  height: 100%;
-}
 .first_wrapper{
-	display: inline-block;
-  vertical-align: middle;
-  //border: 1px solid #888800;
-  width: 500px;
-  height: 500px;
-  margin-top: 240px;
+  margin-top: 15%;
+  text-align: center;
 }
 // This is for search page
 .has-custom-shadow {
@@ -51,193 +32,89 @@ body {
 }
 
 .searchbar{
-  width:500px;
+  width:50%;
   height:30px;
   font-size:1.5em
 }
-// This is for show book
-.second_wrapper{
-  display: inline-block;
-  vertical-align: middle;
-  width: 500px;
-  height: 745px;
-  //border: 1px solid #FF0000;
+
+.content{  
+  margin-top:  2%;
+  margin-left: 2%;
+  margin-right: 2%;
+  margin-bottom: 2%;
 }
-$book_cover_h:550px;
-$common_width:390px;
-$cover_top:10px;
 
 .book_cover{
-  position:relative;
-  width: $common_width;
-  height: $book_cover_h;
-  //border: 1px solid #000000;
-  top:15%;
-  left:-300px; 
-
-  .imagestyle{
-    width: 100%;
-    height: 100%;
-    @include box-shadow(white 2px 2px 10px);
-  }
-    
+  padding: 10px;
 }
 
-.book_info{
-  position:relative;
-  //width: $common_width - 100px;
-  width:700px;
-  height: $book_cover_h - 100px;
-  //border: 1px solid #FF66FF;
-  top:-440px;
-  left: 30%;
-  display:none;
-  background: #FFFFFF;
-  @include border-radius(30px);
-  .title{
-    position:relative;
-    top:40px;
-    font-weight:bolder;
-    // right:10px;
-    text-align:center;
-    line-height: 40px;
-    font-size:2em;
-  }
-  .author{
-    position:relative;
-    font-size:1.3em;
-    margin-top: 70px;
-    font-style: italic;
-  }
-  .content{
-    position:relative;
-    width: 500px;
-    height: 220px;
-    font-size: 1.5em;
-    margin-top: 30px;
-    line-height: 30px;
-    text-align: left;
-    margin-left: auto;
-    margin-right: auto;
-    overflow-y: scroll;
-    display:none;
-  }
-  .otherlink{
-    position:absolute;
-    width: 300px;
-    height: 50px;
-    //background:#000000;
-    margin-bottom:10px;
-    bottom:0px;
-    .link{
-      background:#FFFFFF;
-    }
-    
-  }
+.abstract{
+  font-color: #2F0E07;
+  background-color: #F9F1C0; 
+  padding-right: 10px;
+  padding-left: 10px;
+  overflow: auto;   
 }
-#book_footer{
-  background: #000000;
+
+.text{
+  padding: 10px;
+}
+
+.title_and_author{
+  padding-left: 15px;
+  padding-top: 15px;
+  font-weight:bold;
+  text-align:left;
+  line-height: 40px;
+  font-size:2em;
+}
+
+.tablestyle{
   width: 100%;
-  height:30px;
-  color:#FFFFFF;
-  @include sticky-footer(54px);
+  text-align: center;
+  background-color: #F9F1C0;
+  overflow: auto;
 }
+
+.friendimage{
+  padding-top: 5%;
+  padding-left: 1%;
+  padding-right: 1%;
+  padding-bottom: 5%;
+  width: 100px;
+  height: 100px;
+}
+
+td{
+  vertical-align: top;
+  background-color:  #F9F1C0;
+}
+
+table, th, td {
+  border-collapse: separate;
+  border-spacing: 1em 0.5em;
+}
+
+.otherlink{
+  text-align: right;
+  height: 50px;
+  margin-top:1%;
+}
+
+.back{
+  padding-left: 15px;
+  font-weight:bolder;
+  font-size: 1em;
+  width: 30%;
+  margin-right: 70%;
+}
+
 .outside{
-  &:hover { cursor: pointer; }
   width: 50px;
   height: 50px;
 }
-.fbicon{
-  &:hover { cursor: pointer; }
-  width: 40px;
-  height: 40px;
-}
-#facebookinfo{
-  position:absolute;
-  display: none;
-  //top: 90px;
-  bottom:110px;
-  margin-left: 310px;
-  //margin-right:1000px;
-  //margin-right: auto;
-  width: 400px;
-  height: 100px;
-  //border: 1px solid #FF0000;
-  background: #FFFFFF;
-  @include border-radius(10px);
-}
-#FBtitle{
-  text-align: left;
-  padding-left:10px;
-  width: 400px;
-  height: 50px;
-  vertical-align: middle;
-  line-height: 50px;
-  font-weight:bolder;
-  font-size: 1em;
-  background: #CCDDFF;
-  @include border-radius(4px, 4px);
 
-}
-#friendlist{
-  //display: none;
-
-  top: 50px;
-  right:0px;
-  width: 400px;
-  height: 100px;
-  //border: 1px solid #000000;
-  background: #FFFFFF;
-  @include border-radius(10px);
-  overflow-y: scroll;
-  overflow-x: hidden;
-  .friendimage{
-    display: inline-block;
-    position:relative;
-    //left:-180px;
-    width: 50px;
-    height: 50px;
-    @include border-radius(10px);
-    //border: 1px solid #00FF00;
-    background:#000000;
-    .face{
-      width: 40px;
-      height: 40px;
-    }
-  }
-  .friendname{
-    display: inline-block;
-    position:relative;
-    width: 400px;
-    height: 50px;
-    top:10px;
-    text-align: left;
-    font-size:1.3em;
-    //border: 1px solid #66DD00;
-  }
-}
-.tablestyle{
-  margin-left:0px;
-}
-.FBbody{
-  display: inline-block;
-}
-table{
-  border: 0px solid #000000;
-  align: left;
-}
-tr{  
-   padding:3px 5px 3px 5px;//內文不會貼格子
-} 
-td{  
-   padding:3px 5px 3px 5px;//內文不會貼格子
-   border-bottom: 1px solid #DDDDDD;
-} 
-.returnstyle{
-  position: absolute;
-  width:70px;
-  height:70px;
-  top: 40px;
-  right:100px;
-  &:hover { cursor: pointer; }
+.imagestyle{
+  width: 100%;
+  height: 100%;
 }
