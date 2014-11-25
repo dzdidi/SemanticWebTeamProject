@@ -40,38 +40,49 @@ class Book < ActiveRecord::Base
   end
 
   def self.search_dbpedia(book)
+    #deleting leading and tailing spaces
     book = book.lstrip
     book = book.rstrip
+    #
     ###Oh my god, I want to insert a backslash (\) before each single quotation mark(') 
     ###But "\\\'" doesn't work!!!
     book.gsub!(/'/,"%\'")
     book.gsub!(/%/,"\\")
     ###
     res = {}
-    sparql = SPARQL::Client.new("http://dbpedia.org/sparql")
-    queryString="
-      PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-      PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-      PREFIX dbpedia: <http://dbpedia.org/resource/>
-      PREFIX ontology: <http://dbpedia.org/ontology/>
-      PREFIX dct: <http://purl.org/dc/terms/>
-      select distinct ?name ?book ?author ?abstract ?numberOfPages ?publisher
-      where {
-        ?book rdf:type ontology:Book;
-              dbpprop:name ?name;   
-              ontology:abstract ?abstract.
-        OPTIONAL {
-        ?book dbpprop:author ?author;
-              ontology:numberOfPages ?numberOfPages;
-              dbpprop:publisher ?publisher
-        }
-        FILTER (langMatches(lang(?abstract), 'EN'))
-        FILTER (lcase(str(?name)) = lcase('#{book}'))
-      }LIMIT 1"
-    query = sparql.query(queryString)
-    query.each_solution do |solution|
-      res.store("author", solution.author.to_s.split("/").last.split("_").join(" ")) if solution.bound?('author')
-      res.store("abstract", solution.abstract.to_s)
+    2.times do #One for search with leading 'the', one for without
+      sparql = SPARQL::Client.new("http://dbpedia.org/sparql")
+      queryString="
+        PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+        PREFIX dbpedia: <http://dbpedia.org/resource/>
+        PREFIX ontology: <http://dbpedia.org/ontology/>
+        PREFIX dct: <http://purl.org/dc/terms/>
+        select distinct ?name ?book ?author ?abstract ?numberOfPages ?publisher
+        where {
+          ?book rdf:type ontology:Book;
+                dbpprop:name ?name;   
+                ontology:abstract ?abstract.
+          OPTIONAL {
+          ?book dbpprop:author ?author;
+                ontology:numberOfPages ?numberOfPages;
+                dbpprop:publisher ?publisher
+          }
+          FILTER (langMatches(lang(?abstract), 'EN'))
+          FILTER (lcase(str(?name)) = lcase('#{book}'))
+        }LIMIT 1"
+      query = sparql.query(queryString)
+      query.each_solution do |solution|
+        res.store("author", solution.author.to_s.split("/").last.split("_").join(" ")) if solution.bound?('author')
+        res.store("abstract", solution.abstract.to_s)
+      end
+      break if (res["abstract"] != nil) && (res["abstract"].to_s.length > 0)
+      res = {}
+      if book[0..2].downcase == 'the'
+        book.slice!(0,2)
+      else
+        book = 'the ' + book
+      end
     end
     res
   end
