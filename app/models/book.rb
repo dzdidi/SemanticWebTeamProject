@@ -1,4 +1,5 @@
 require "net/http"
+require "json"
 class Book < ActiveRecord::Base
 
   has_many :user_book_relation
@@ -88,7 +89,7 @@ class Book < ActiveRecord::Base
   end
 
   def self.search_facebook_friends_books()
-    url = "https://graph.facebook.com/v2.1/me?friends%7Bbooks%7D&access_token=#{$token}"
+    url = "https://graph.facebook.com/v2.1/me?fields=friends%7Bbooks%7Bname%7D%7D&access_token=#{$token}"
     uri = URI.parse(url)
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
@@ -97,7 +98,14 @@ class Book < ActiveRecord::Base
     response = http.request(request)
   end
 
-
+  def self.get_friends_ids_who_read(book_name)
+    ids = []
+    facebook = JSON.parse(self.search_facebook_friends_books())
+    facebook["friends"]["data"].each do |friend|
+      friend["books"]["data"].each { |book| ids << friend["id"] if book["name"] == book_name }  
+    end
+    ids
+  end
 
   def self.search_friends_books(user_id)
     res = {}
