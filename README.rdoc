@@ -1,18 +1,19 @@
-<b>README</b>
+=README
 
 This README describes steps are necessary to get the application up and running.
 
-You need to have:
-* Ruby version 1.9.3 http://railsinstaller.org/
+==You need to have:
+* Ruby version 1.9.3 can be downloaded: http://railsinstaller.org
 
-Actions to run:
+==Actions to run:
 * Clone repository <tt>git clone </tt>
 
 * Install dependencies <tt>bundle install</tt>
 
-* Setup database  <tt>rake db:create</tt>
-                  <tt>rake db:migrate</tt>
-                  <tt>rake db:seed</tt>
+* Setup database:
+- <tt>rake db:create</tt>
+- <tt>rake db:migrate</tt>
+- <tt>rake db:seed</tt>
 
 * Run server <tt>rails server</tt>
 
