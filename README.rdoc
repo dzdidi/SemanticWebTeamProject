@@ -1,27 +1,20 @@
-<h1>README</h1>
+<b>README</b>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This README describes steps are necessary to get the application up and running.
 
-Things you may want to cover:
+You need to have:
+* Ruby version 1.9.3 http://railsinstaller.org/
 
-* Ruby version
+Actions to run:
+* Clone repository `git clone`
 
-* System dependencies
+* Install dependencies `bundle install` 
 
-* Configuration
+* Setup database `rake db:create db:migrate db:seed`
 
-* Database creation
+* Run server `rails server`
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Go to page in your browser `localhost:3000`
 
 
 Please feel free to use a different markup language if you do not plan to run
