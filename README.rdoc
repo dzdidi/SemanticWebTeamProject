@@ -6,14 +6,15 @@ This README describes steps are necessary to get the application up and running.
 * Ruby version 1.9.3 can be downloaded: http://railsinstaller.org
 
 ==Actions to run:
-* Clone repository <tt>git clone </tt>
+* Clone repository: <tt>git clone https://github.com/dzdidi/SemanticWebTeamProject.git </tt>
 
 * Install dependencies <tt>bundle install</tt>
 
-* Setup database:
--- <tt>rake db:create</tt>
--- <tt>rake db:migrate</tt>
--- <tt>rake db:seed</tt>
+* Create database: <tt>rake db:create</tt> (possibly can be redundant)
+
+* Run migrations: <tt>rake db:migrate</tt>
+
+* Run seeds: <tt>rake db:seed</tt>
 
 * Run server <tt>rails server</tt>
 
