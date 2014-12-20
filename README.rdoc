@@ -6,16 +6,14 @@ You need to have:
 * Ruby version 1.9.3 http://railsinstaller.org/
 
 Actions to run:
-* Clone repository `git clone`
+* Clone repository <tt>git clone </tt>
 
-* Install dependencies `bundle install` 
+* Install dependencies <tt>bundle install</tt>
 
-* Setup database `rake db:create db:migrate db:seed`
+* Setup database  <tt>rake db:create</tt>
+                  <tt>rake db:migrate</tt>
+                  <tt>rake db:seed</tt>
 
-* Run server `rails server`
+* Run server <tt>rails server</tt>
 
-* Go to page in your browser `localhost:3000`
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+* Go to page in your browser <tt>localhost:3000</tt>
