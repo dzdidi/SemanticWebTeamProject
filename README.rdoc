@@ -11,9 +11,9 @@ This README describes steps are necessary to get the application up and running.
 * Install dependencies <tt>bundle install</tt>
 
 * Setup database:
-- <tt>rake db:create</tt>
-- <tt>rake db:migrate</tt>
-- <tt>rake db:seed</tt>
+-- <tt>rake db:create</tt>
+-- <tt>rake db:migrate</tt>
+-- <tt>rake db:seed</tt>
 
 * Run server <tt>rails server</tt>
 
